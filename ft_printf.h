@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/05 13:13:07 by mvann             #+#    #+#             */
-/*   Updated: 2017/10/23 16:21:38 by mvann            ###   ########.fr       */
+/*   Updated: 2017/10/24 14:02:24 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int		ft_str_iofc(char *str, char c);
 
 int		add_flags(const char *format, t_info *info);
 int		is_instr(char *str, char c);
-int		if_flagged(int flags, char *str, char c);
+int		is_flagged(int flags, char *str, char c);
 
 int		put_specifier(const char *format, t_info *info);
 

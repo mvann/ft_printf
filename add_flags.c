@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 13:37:05 by mvann             #+#    #+#             */
-/*   Updated: 2017/10/23 14:45:10 by mvann            ###   ########.fr       */
+/*   Updated: 2017/10/24 14:02:19 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		is_instr(char *str, char c)
 	return (ft_str_iofc(str, c) != -1);
 }
 
-int		if_flagged(int flags, char *str, char c)
+int		is_flagged(int flags, char *str, char c)
 {
 	return (flags & (1 << ft_str_iofc(str, c)));
 }
@@ -35,8 +35,6 @@ int		add_behavior_flags(const char *format, t_info *info)
 	c = format[info->i];
 	while (is_instr(BEHAVIOR_FLAGS, c) && c)
 	{
-		// if (if_flagged(info->flags, FLAGS, c))
-		// 	return (0);
 		add_flag(info, FLAGS, c);
 		info->i++;
 		c = format[info->i];

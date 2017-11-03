@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 17:57:48 by mvann             #+#    #+#             */
-/*   Updated: 2017/10/23 15:13:20 by mvann            ###   ########.fr       */
+/*   Updated: 2017/10/24 14:04:31 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void init_funcs(t_specifier_func *funcs)
 	funcs[9] = NULL;
 	funcs[10] = NULL;
 	funcs[11] = NULL;
-	funcs[12] = %print_c;
+	funcs[12] = &print_c;
 	funcs[13] = NULL;
 }
 
@@ -36,8 +36,6 @@ int		put_specifier(const char *format, t_info *info)
 	char c;
 
 	t_specifier_func *funcs;
-
-	printf("entered\n");
 
 	c = format[info->i];
 	if (!is_instr(SPECIFIERS, c))

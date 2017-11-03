@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 14:21:28 by mvann             #+#    #+#             */
-/*   Updated: 2017/10/24 13:56:42 by mvann            ###   ########.fr       */
+/*   Updated: 2017/10/24 14:24:20 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,28 +23,20 @@ int		print_char(char length[2], int c)
 
 int		print_c(t_info *info)
 {
-	char c;
-	int		i;
+	int		c;
 	int		count;
+	int		c_index;
 
 	count = 0;
 	c = va_arg(info->ap, int);
-	while (count < info->min_field_width)
+	c_index = (is_flagged(info->flags, FLAGS, '-')
+		? info->min_field_width - 1 : 0);
+	while (count < info->min_field_width || count < 1)
 	{
-		if (is_flagged(info->flags, FLAGS, '-'))
-		{
-			if (count == 0)
-				count += print_char(c);
-			else
-				count += print_char(is_flagged(info->flags, FLAGS, '0') ? '0' : ' ');
-		}
+		if (count == c_index)
+			count += print_char(info->length, c);
 		else
-		{
-			if (count == info->min_field_width - 1)
-				count += print_char(c);
-			else
-				count += print_char(is_flagged(info->flags, FLAGS, '0') ? '0' : ' ');
-		}
+			count += print_char("  ", is_flagged(info->flags, FLAGS, '0') ? '0' : ' ');
 	}
 	ft_putwchar(c);
 	return (1);
