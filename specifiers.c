@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 17:57:48 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/14 20:10:46 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/14 20:17:48 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	init_funcs(t_specifier_func *funcs)
 	funcs[11] = &print_unsigned_hex_upper;
 	funcs[12] = &print_c;
 	funcs[13] = &print_c;
-	funcs[13] = &print_percentage;
+	funcs[14] = &print_percentage;
 }
 
 int		put_specifier(const char *format, t_info *info)
