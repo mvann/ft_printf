@@ -6,7 +6,7 @@
 #    By: mvann <mvann@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/23 14:11:42 by mvann             #+#    #+#              #
-#    Updated: 2017/11/14 17:53:39 by mvann            ###   ########.fr        #
+#    Updated: 2017/11/14 18:45:52 by mvann            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ SRC = main.c\
 	  ft_ultoa_base.c\
 	  unsigned.c\
 	  helper_functions.c\
-	  mapped_functions.c
+	  mapped_functions.c\
+	  flag_functions.c
 
 all: $(NAME)
 
