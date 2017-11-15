@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 14:21:28 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/14 20:09:49 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/14 20:20:42 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		print_c(t_info *info)
 			count += print_char("  ",
 			is_flagged(info->flags, FLAGS, '0') ? '0' : ' ');
 	}
-	ft_putwchar(c);
+	// ft_putwchar(c);
 	return (1);
 }
 
@@ -61,6 +61,6 @@ int		print_percentage(t_info *info)
 			count += print_char("  ",
 			is_flagged(info->flags, FLAGS, '0') ? '0' : ' ');
 	}
-	ft_putwchar(c);
+	//ft_putwchar(c);
 	return (1);
 }
