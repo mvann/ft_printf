@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 17:57:48 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/14 15:51:17 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/14 18:48:32 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,19 @@
 void	init_funcs(t_specifier_func *funcs)
 {
 	funcs[0] = &print_s;
-	funcs[1] = NULL;
+	funcs[1] = &print_s;
 	funcs[2] = NULL;
 	funcs[3] = &print_signed_int;
-	funcs[4] = NULL;
+	funcs[4] = &print_signed_int;
 	funcs[5] = &print_signed_int;
 	funcs[6] = &print_unsigned_oct;
-	funcs[7] = NULL;
+	funcs[7] = &print_unsigned_oct;
 	funcs[8] = &print_unsigned_int;
-	funcs[9] = NULL;
+	funcs[9] = &print_unsigned_int;
 	funcs[10] = &print_unsigned_hex;
 	funcs[11] = &print_unsigned_hex_upper;
 	funcs[12] = &print_c;
-	funcs[13] = NULL;
+	funcs[13] = &print_c;
 }
 
 int		put_specifier(const char *format, t_info *info)

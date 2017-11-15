@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 16:10:03 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/13 21:00:36 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/14 17:34:38 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ static int	print_s_chars(char *s)
 int			print_s(t_info *info)
 {
 	char	*s;
-	int		i;
 	int		count;
 	int		len;
 

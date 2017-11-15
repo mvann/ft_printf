@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/05 13:13:07 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/14 16:39:10 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/14 18:47:43 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,23 +26,6 @@
 # ifndef NULL
 #  define NULL (void *)0
 # endif
-
-// typedef struct	s_flags
-// {
-// 	int			HASH;
-// 	int			DASH;
-// 	int			PLUS;
-// 	int			ZERO;
-// 	int			SPACE;
-// 	int			DOT;
-// 	int			HH;
-// 	int			H;
-// 	int			L;
-// 	int			LL;
-// 	int			J;
-// 	int			Z;
-// }				t_flags;
-
 
 typedef struct	s_info
 {
