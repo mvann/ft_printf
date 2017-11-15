@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/05 13:13:07 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/14 18:47:43 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/14 20:10:07 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define FLAGS "#-+0 .hljz*"
 # define BEHAVIOR_FLAGS "#-+0 "
 # define LENGTH_FLAGS "hljz"
-# define SPECIFIERS "sSpdDioOuUxXcC"
+# define SPECIFIERS "sSpdDioOuUxXcC%"
 
 # ifndef NULL
 #  define NULL (void *)0
@@ -51,6 +51,8 @@ void			add_flag(t_info *info, char *str, char c);
 int				put_specifier(const char *format, t_info *info);
 
 int				print_c(t_info *info);
+int				print_percentage(t_info *info);
+
 
 int				print_s(t_info *info);
 

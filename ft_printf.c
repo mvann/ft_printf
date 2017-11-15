@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/04 15:55:24 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/14 17:34:09 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/14 20:06:37 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ int			format_str(const char *format, t_info *info)
 
 	count = 0;
 	info->i++;
-	if (format[info->i] == '%')
-	{
-		ft_putchar('%');
-		info->i++;
-		return (1);
-	}
+	// if (format[info->i] == '%')
+	// {
+	// 	ft_putchar('%');
+	// 	info->i++;
+	// 	return (1);
+	// }
 	if (!add_flags(format, info))
 		return (-1);
 	if ((count = put_specifier(format, info)) < 0)
