@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/05 13:13:07 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/14 20:10:07 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/15 13:50:43 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ void			add_flag(t_info *info, char *str, char c);
 
 int				put_specifier(const char *format, t_info *info);
 
-int				print_c(t_info *info);
+int				print_c(t_info *info, int use_percentage);
+int				print_character(t_info *info);
 int				print_percentage(t_info *info);
 
 

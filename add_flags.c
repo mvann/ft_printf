@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 13:37:05 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/13 21:07:16 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/15 13:43:05 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int		add_field_width(const char *format, t_info *info)
 	}
 	else if (c >= '0' && c <= '9')
 	{
-		info->min_field_width = ft_atoi(format);
+		info->min_field_width = ft_atoi(format + info->i);
 		while (format[info->i] >= '0' && format[info->i] <= '9'
 		&& format[info->i])
 			info->i++;

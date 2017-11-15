@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 17:57:48 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/14 20:17:48 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/15 13:49:43 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,15 @@ void	init_funcs(t_specifier_func *funcs)
 	funcs[9] = &print_unsigned_int;
 	funcs[10] = &print_unsigned_hex;
 	funcs[11] = &print_unsigned_hex_upper;
-	funcs[12] = &print_c;
-	funcs[13] = &print_c;
+	funcs[12] = &print_character;
+	funcs[13] = &print_character;
 	funcs[14] = &print_percentage;
 }
 
 int		put_specifier(const char *format, t_info *info)
 {
 	char				c;
+	int					count;
 	t_specifier_func	*funcs;
 
 	c = format[info->i];
@@ -42,8 +43,8 @@ int		put_specifier(const char *format, t_info *info)
 	funcs = (t_specifier_func *)malloc(
 		sizeof(t_specifier_func) * ft_strlen(SPECIFIERS));
 	init_funcs(funcs);
-	if ((*funcs[ft_str_iofc(SPECIFIERS, c)])(info) < 0)
+	if ((count = (*funcs[ft_str_iofc(SPECIFIERS, c)])(info)) < 0)
 		return (-1);
 	info->i++;
-	return (0);
+	return (count);
 }

@@ -6,7 +6,7 @@
 #    By: mvann <mvann@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/23 14:11:42 by mvann             #+#    #+#              #
-#    Updated: 2017/11/14 20:27:02 by mvann            ###   ########.fr        #
+#    Updated: 2017/11/15 13:41:28 by mvann            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,10 @@ $(NAME):
 	@gcc $(FLAGS) -c $(SRC)
 	@ar rc $(NAME) $(SRC:.c=.o) libft/*.o
 	@ranlib $(NAME)
+
+deleteme: re
+	@gcc $(FLAGS) -o deleteme main.c -L . -lftprintf
+	@./deleteme
 
 clean:
 	@rm -f $(SRC:.c=.o)
