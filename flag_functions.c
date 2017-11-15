@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   flag_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/04 15:48:35 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/13 21:02:00 by mvann            ###   ########.fr       */
+/*   Created: 2017/11/13 21:01:08 by mvann             #+#    #+#             */
+/*   Updated: 2017/11/13 21:01:49 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h> //delete this whole file actually
 #include "ft_printf.h"
-// int	 printf(__const char * restrict, ...) __attribute__((__format__ (__printf__, 1,  2)));
-int		main()
+
+int		is_instr(char *str, char c)
 {
-	//char str[] = "sup";
-	// ft_printf("%lc\n", L'Δ');
-	// ft_printf("%ls\n", (wchar_t *)"hell there");
+	return (ft_str_iofc(str, c) != -1);
+}
 
-	ft_printf("%#.0o\n", 0);
+int		is_flagged(int flags, char *str, char c)
+{
+	return (flags & (1 << ft_str_iofc(str, c)));
+}
 
-	return (0);
+void	add_flag(t_info *info, char *str, char c)
+{
+	info->flags |= (1 << ft_str_iofc(str, c));
 }

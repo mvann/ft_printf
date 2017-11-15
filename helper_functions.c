@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   helper_functions.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/04 15:48:35 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/13 21:02:00 by mvann            ###   ########.fr       */
+/*   Created: 2017/11/14 15:40:08 by mvann             #+#    #+#             */
+/*   Updated: 2017/11/14 15:41:50 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h> //delete this whole file actually
 #include "ft_printf.h"
-// int	 printf(__const char * restrict, ...) __attribute__((__format__ (__printf__, 1,  2)));
-int		main()
+
+int		putnchars(char c, int n)
 {
-	//char str[] = "sup";
-	// ft_printf("%lc\n", L'Δ');
-	// ft_printf("%ls\n", (wchar_t *)"hell there");
+	int count;
 
-	ft_printf("%#.0o\n", 0);
+	count = n > 0 ? n : 0;
+	while (n-- > 0)
+		ft_putchar(c);
+	return (count);
+}
 
-	return (0);
+int		ft_str_iofc(char *str, char c)
+{
+	char *ptr;
+
+	if ((ptr = ft_strchr(str, c)))
+		return ((int)(ptr - str));
+	return (-1);
 }

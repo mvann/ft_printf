@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 14:21:28 by mvann             #+#    #+#             */
-/*   Updated: 2017/10/24 14:24:20 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/13 20:49:16 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ int		print_c(t_info *info)
 		if (count == c_index)
 			count += print_char(info->length, c);
 		else
-			count += print_char("  ", is_flagged(info->flags, FLAGS, '0') ? '0' : ' ');
+			count += print_char("  ",
+			is_flagged(info->flags, FLAGS, '0') ? '0' : ' ');
 	}
 	ft_putwchar(c);
 	return (1);
