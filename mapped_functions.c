@@ -6,11 +6,18 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 16:14:08 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/15 19:06:12 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/15 19:13:37 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int	print_long_int(t_info *info)
+{
+	info->length[0] = 'l';
+	info->length[1] = ' ';
+	print_signed_int(t_info *info);
+}
 
 int	print_unsigned_oct(t_info *info)
 {
