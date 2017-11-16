@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 16:14:08 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/15 19:24:25 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/15 19:25:58 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	print_long_signed_int(t_info *info)
 {
 	info->length[0] = 'l';
 	info->length[1] = ' ';
+	add_flag(info, FLAGS, '#');
 	return (print_signed_int(info));
 }
 
