@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/05 13:13:07 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/15 19:14:55 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/15 19:16:26 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ char			*ft_ultoa_base(unsigned long value, int base, int uppercase);
 
 int				print_unsigned(t_info *info, int base, int uppercase);
 unsigned long	get_unsigned(char l[2], t_info *info);
-int				print_long_int(t_info *info);
+int				print_long_signed_int(t_info *info);
 int				print_unsigned_oct(t_info *info);
 int				print_unsigned_hex(t_info *info);
 int				print_unsigned_hex_upper(t_info *info);

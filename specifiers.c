@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 17:57:48 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/15 19:08:08 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/15 19:16:36 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	init_funcs(t_specifier_func *funcs)
 	funcs[1] = &print_s;
 	funcs[2] = NULL;
 	funcs[3] = &print_signed_int;
-	funcs[4] = &print_signed_int;
+	funcs[4] = &print_long_signed_int;
 	funcs[5] = &print_signed_int;
 	funcs[6] = &print_unsigned_oct;
 	funcs[7] = &print_unsigned_oct;
