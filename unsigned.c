@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 19:43:18 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/15 19:53:42 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/15 20:01:41 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,5 @@ int				print_pointer(t_info *info)
 			count += putnchars(' ', info->min_field_width - 2);
 		return (count);
 	}
-	return (print_number(info, 16, 0, s));
+	return (print_number(info, -1, 0, s));
 }

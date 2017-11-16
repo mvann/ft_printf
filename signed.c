@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 17:42:05 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/15 18:47:31 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/15 20:01:10 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ int	print_number(t_info *info, int base, int uppercase, char *s)
 		count += put_str_retlen("0");
 	else if (s[0] == '-' || s[0] == '+' || s[0] == ' ')
 		count += putnchars(s[0], 1);
+	else if (base == -1)
+		count += put_str_retlen("0x");
 	if ((is_flagged(info->flags, FLAGS, '0') && info->precision < 0) && !is_flagged(info->flags, FLAGS, '-'))
 		count += putnchars('0', e);
 	count += putnchars('0', precision);
