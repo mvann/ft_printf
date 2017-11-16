@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 13:37:05 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/15 13:43:05 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/15 16:22:32 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ int		add_precision(const char *format, t_info *info)
 		&& format[info->i])
 			info->i++;
 	}
+	else
+		info->precision = 0;
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 17:42:05 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/14 16:11:11 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/15 18:47:31 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,30 +39,63 @@ int			print_signed_int(t_info *info)
 {
 	long	n;
 	char	*s;
-	int		i;
-	int		e;
-	int		count;
 
 	n = get_decimal(info->length, info);
-	s = ft_ltoa_base(n, 10, 0);
-	i = 0;
-	e = info->precision - ft_strlen(s);
-	count = 0;
+	if (info->length[0] == 'h')
+	{
+		if (info->length[1] == 'h')
+			n = (long)(char)n;
+		else
+			n = (long)(short)n;
+	}
+	s = ft_ltoa_base(n, 10, is_flagged(info->flags, FLAGS, '+'), is_flagged(info->flags, FLAGS, ' '));
+
 	if (s[0] == '0' && info->precision == 0)
 	{
 		free(s);
-		return (0);
+		return (putnchars(' ', info->min_field_width));
 	}
-	if (!is_flagged(info->flags, FLAGS, '-'))
-		count += putnchars(is_flagged(info->flags, FLAGS, '0') ? '0' : ' ', e);
+	return (print_number(info, 10, 0, s));
+
+}
+
+int	print_number(t_info *info, int base, int uppercase, char *s)
+{
+	int e;
+	int i;
+	int s_len;
+	int	precision;
+	int	count;
+
+	s_len = ft_strlen(s) + (is_flagged(info->flags, FLAGS, '#') && base == 16 ?
+		2 : 0);
+	s_len += (is_flagged(info->flags, FLAGS, '#') && base == 8 ? 1 : 0);
+	s_len = s[0] == '0' ? 1 : s_len;
+	precision = info->precision < 0 ? 1 : info->precision;
+	precision = precision - (s_len) + (s[0] == '-' || s[0] == '+' || s[0] == ' ');
+	e = info->min_field_width - (s_len + (precision >= 0 ? precision : 0));
+	count = 0;
+	if ((!is_flagged(info->flags, FLAGS, '0') ||
+	(is_flagged(info->flags, FLAGS, '0') && info->precision >= 0)) &&
+	!is_flagged(info->flags, FLAGS, '-'))
+		count += putnchars(' ', e);
+	if (base == 16 && is_flagged(info->flags, FLAGS, '#') && s[0] != '0')
+		count += put_str_retlen(uppercase ? "0X" : "0x");
+	else if (base == 8 && is_flagged(info->flags, FLAGS, '#') && s[0] != '0')
+		count += put_str_retlen("0");
+	else if (s[0] == '-' || s[0] == '+' || s[0] == ' ')
+		count += putnchars(s[0], 1);
+	if ((is_flagged(info->flags, FLAGS, '0') && info->precision < 0) && !is_flagged(info->flags, FLAGS, '-'))
+		count += putnchars('0', e);
+	count += putnchars('0', precision);
+	i = (s[0] == '-' || s[0] == '+' || s[0] == ' ');
 	while (s[i])
 	{
 		ft_putchar(s[i++]);
-		info->precision--;
 		count++;
 	}
 	free(s);
 	if (is_flagged(info->flags, FLAGS, '-'))
-		count += putnchars(is_flagged(info->flags, FLAGS, '0') ? '0' : ' ', e);
+		count += putnchars(' ', e);
 	return (count);
 }

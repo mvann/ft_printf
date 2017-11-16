@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 14:21:28 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/15 13:51:03 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/15 14:17:23 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		print_c(t_info *info, int use_percentage)
 		? 0 : info->min_field_width - 1);
 	while (count < info->min_field_width || count < 1)
 	{
-		if (count == c_index)
+		if (count == c_index || info->min_field_width == 0)
 			count += print_char(info->length, c);
 		else
 			count += print_char("  ",

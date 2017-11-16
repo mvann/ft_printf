@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 15:40:08 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/14 15:41:50 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/15 14:58:35 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@ int		putnchars(char c, int n)
 	while (n-- > 0)
 		ft_putchar(c);
 	return (count);
+}
+
+int		put_str_retlen(char *s)
+{
+	ft_putstr(s);
+	return (ft_strlen(s));
 }
 
 int		ft_str_iofc(char *str, char c)

@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 19:34:26 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/14 17:35:27 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/15 17:07:15 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	ft_find_pow(long n, int base)
 	return (pow);
 }
 
-static char	*ft_build_str(int uppercase, long value, int base, int negative)
+static char	*ft_build_str(long value, int base, int negative, int sign, int space)
 {
 	int		len;
 	int		i;
@@ -42,10 +42,10 @@ static char	*ft_build_str(int uppercase, long value, int base, int negative)
 	char	*out;
 
 	pow = ft_find_pow(value, base);
-	len = 1 + pow + negative;
+	len = 1 + pow + (negative || sign || space);
 	out = (char *)malloc(sizeof(char) * len + 1);
-	digits = uppercase ? "0123456789ABCDEF" : "0123456789abcdef";
-	i = negative;
+	digits = "0123456789ABCDEF";
+	i = (negative || sign || space);
 	while (i < len)
 	{
 		out[i] = digits[value / ft_pow(base, pow)];
@@ -55,6 +55,10 @@ static char	*ft_build_str(int uppercase, long value, int base, int negative)
 	}
 	if (negative)
 		out[0] = '-';
+	else if (sign)
+		out[0] = '+';
+	else if (space)
+		out[0] = ' ';
 	out[len] = '\0';
 	return (out);
 }
@@ -76,9 +80,8 @@ char		*ft_build_longmin(void)
 	return (out);
 }
 
-char		*ft_ltoa_base(long value, int base, int uppercase)
+char		*ft_ltoa_base(long value, int base, int sign, int space)
 {
-	int		len;
 	int		negative;
 	long	min;
 
@@ -86,8 +89,7 @@ char		*ft_ltoa_base(long value, int base, int uppercase)
 	if (value == min)
 		return (ft_build_longmin());
 	negative = value < 0;
-	len = 1 + ft_find_pow(value, base) + negative;
 	if (negative)
 		value = value * -1;
-	return (ft_build_str(uppercase, value, base, negative));
+	return (ft_build_str(value, base, negative, sign, space));
 }

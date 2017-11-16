@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 19:43:18 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/14 16:39:47 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/15 18:38:13 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,32 +39,23 @@ int				print_unsigned(t_info *info, int base, int uppercase)
 {
 	unsigned long n;
 	char *s;
-	int i;
-	int e;
+	// int i;
+	// int e;
 	int count;
 
 	n = get_unsigned(info->length, info);
 	s = ft_ultoa_base(n, base, uppercase);
-	i = 0;
-	e = info->precision - ft_strlen(s);
+	// i = 0;
+	// e = info->min_field_width - ft_strlen(s);
 	count = 0;
+
 	if (s[0] == '0' && info->precision == 0)
 	{
 		free(s);
-		return (0);
+		if (is_flagged(info->flags, FLAGS, '#') && base == 8)
+			count += put_str_retlen("0");
+		return (count + putnchars(' ', info->min_field_width -
+			(base == 8 && is_flagged(info->flags, FLAGS, '#'))));
 	}
-	if (!is_flagged(info->flags, FLAGS, '-'))
-		count += putnchars(is_flagged(info->flags, FLAGS, '0') ? '0' : ' ', e);
-	while (s[i])
-	{
-		if (base == 16 && is_flagged(info->flags, FLAGS, '#') && i == 0)
-			ft_putstr(uppercase ? "0X" : "0x");
-		ft_putchar(s[i++]);
-		info->precision--;
-		count++;
-	}
-	free(s);
-	if (is_flagged(info->flags, FLAGS, '-'))
-		count += putnchars(is_flagged(info->flags, FLAGS, '0') ? '0' : ' ', e);
-	return (count);
+	return (print_number(info, base, uppercase, s));
 }

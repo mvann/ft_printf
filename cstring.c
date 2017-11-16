@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 16:10:03 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/14 17:34:38 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/15 16:38:39 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,23 +36,26 @@ int			print_s(t_info *info)
 	char	*s;
 	int		count;
 	int		len;
+	int		lesser;
 
 	s = va_arg(info->ap, char *);
 	if (!s)
-		return (-1);
+		s = "(null)";
 	count = 0;
 	len = ft_strlen(s);
+	lesser = info->precision < len && info->precision >= 0 ? info->precision : len;
+	if (!is_flagged(info->flags, FLAGS, '-'))
+		count += putnchars(' ', info->min_field_width - lesser);
 	if (info->precision >= 0)
 	{
-		write(1, s, info->precision < len ? info->precision : len);
-		count += info->precision < len ? info->precision : len;
+		write(1, s, lesser);
+		count += lesser;
 	}
 	else if (info->length[0] == 'l' && info->length[1] != 'l')
 		count += print_s_chars(s);
 	else
-	{
-		ft_putstr(s);
-		count += len;
-	}
+		count += put_str_retlen(s);
+	if (is_flagged(info->flags, FLAGS, '-'))
+		count += putnchars(' ', info->min_field_width - lesser);
 	return (count);
 }
