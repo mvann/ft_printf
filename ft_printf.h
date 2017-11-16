@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/05 13:13:07 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/15 17:02:03 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/15 19:07:48 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,7 @@ int				print_unsigned_oct(t_info *info);
 int				print_unsigned_hex(t_info *info);
 int				print_unsigned_hex_upper(t_info *info);
 int				print_unsigned_int(t_info *info);
+int				print_long_unsigned_int(t_info *info);
+
 
 #endif
