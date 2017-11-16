@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 19:43:18 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/15 19:52:28 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/15 19:53:42 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int				print_pointer(t_info *info)
 	char *s;
 	int count;
 
+	add_flag(info, FLAGS, '#');
 	n = va_arg(info->ap, unsigned long);
 	s = ft_ultoa_base(n, 16, 0);
 	count = 0;
