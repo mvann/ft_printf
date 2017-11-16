@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/05 13:13:07 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/15 13:50:43 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/15 17:02:03 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef int	(*t_specifier_func)(t_info *);
 int				ft_printf(const char *format, ...);
 int				ft_str_iofc(char *str, char c);
 int				putnchars(char c, int n);
+int				put_str_retlen(char *s);
 
 int				add_flags(const char *format, t_info *info);
 int				is_instr(char *str, char c);
@@ -58,7 +59,8 @@ int				print_percentage(t_info *info);
 int				print_s(t_info *info);
 
 int				print_signed_int(t_info *info);
-char			*ft_ltoa_base(long value, int base, int uppercase);
+int				print_number(t_info *info, int base, int uppercase, char *s);
+char			*ft_ltoa_base(long value, int base, int sign, int space);
 char			*ft_ultoa_base(unsigned long value, int base, int uppercase);
 
 int				print_unsigned(t_info *info, int base, int uppercase);
