@@ -6,11 +6,18 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 16:14:08 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/15 19:16:18 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/15 19:20:25 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int	print_pointer(t_info *info)
+{
+	info->length[0] = ' ';
+	info->length[1] = ' ';
+	return (print_unsigned(info, 16, 1));
+}
 
 int	print_long_signed_int(t_info *info)
 {
