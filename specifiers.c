@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 17:57:48 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/15 21:06:56 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/16 18:44:36 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	init_funcs(t_specifier_func *funcs)
 {
 	funcs[0] = &print_s;
-	funcs[1] = &print_long_s;
+	funcs[1] = &print_capital_s;
 	funcs[2] = &print_pointer;
 	funcs[3] = &print_signed_int;
 	funcs[4] = &print_long_signed_int;
@@ -27,7 +27,7 @@ void	init_funcs(t_specifier_func *funcs)
 	funcs[10] = &print_unsigned_hex;
 	funcs[11] = &print_unsigned_hex_upper;
 	funcs[12] = &print_character;
-	funcs[13] = &print_character;
+	funcs[13] = &print_capital_c;
 	funcs[14] = &print_percentage;
 }
 

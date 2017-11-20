@@ -6,11 +6,11 @@
 #    By: mvann <mvann@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/23 14:11:42 by mvann             #+#    #+#              #
-#    Updated: 2017/11/15 13:41:28 by mvann            ###   ########.fr        #
+#    Updated: 2017/11/16 11:22:05 by mvann            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = 
 NAME = libftprintf.a
 SRC = ft_printf.c\
 	  add_flags.c\

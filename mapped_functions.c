@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 16:14:08 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/15 21:03:29 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/20 12:41:35 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,18 @@
 // 	return (print_unsigned(info, 16, 0));
 // }
 
-int	print_long_s(t_info *info)
+int	print_capital_s(t_info *info)
 {
 	info->length[0] = 'l';
 	info->length[1] = ' ';
-	return (print_s(info));
+	return (print_long_s(info));
+}
+
+int	print_capital_c(t_info *info)
+{
+	info->length[0] = 'l';
+	info->length[1] = ' ';
+	return (print_character(info));
 }
 
 int	print_long_signed_int(t_info *info)

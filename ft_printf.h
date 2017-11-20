@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/05 13:13:07 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/15 21:04:25 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/20 12:45:45 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,14 @@ void			add_flag(t_info *info, char *str, char c);
 
 int				put_specifier(const char *format, t_info *info);
 
+int				print_char(char length[2], int c);
 int				print_c(t_info *info, int use_percentage);
 int				print_character(t_info *info);
 int				print_percentage(t_info *info);
 
 
 int				print_s(t_info *info);
+int				print_long_s(t_info *info);
 
 int				print_signed_int(t_info *info);
 int				print_number(t_info *info, int base, int uppercase, char *s);
@@ -67,7 +69,8 @@ char			*ft_ultoa_base(unsigned long value, int base, int uppercase);
 int				print_unsigned(t_info *info, int base, int uppercase);
 unsigned long	get_unsigned(char l[2], t_info *info);
 
-int				print_long_s(t_info *info);
+int				print_capital_s(t_info *info);
+int				print_capital_c(t_info *info);
 int				print_pointer(t_info *info);
 int				print_long_signed_int(t_info *info);
 int				print_unsigned_oct(t_info *info);

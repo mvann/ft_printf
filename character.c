@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 14:21:28 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/15 14:17:23 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/20 12:56:41 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,17 @@
 
 int		print_char(char length[2], int c)
 {
-	if (length[0] != 'l')
-		write(1, &c, 1);
-	else
-		ft_putwchar(c);
+	// printf("\nC:%d, {%c,%c}\n", c, length[0], length[1]);
+	if (length[0] == 'l' && length[1] != 'l')
+	{
+		if ((unsigned int)c > 255)
+			return (-1);
+	}
+	// {
+	ft_putchar(c);
+	// }
+	// else
+	// 	ft_putwchar(c);
 	return (1);
 }
 
@@ -26,18 +33,24 @@ int		print_c(t_info *info, int use_percentage)
 	int		c;
 	int		count;
 	int		c_index;
+	int		ret;
 
 	count = 0;
 	c = use_percentage ? '%' : va_arg(info->ap, int);
+	// c = info->length[0] == 'l' && info->length[1] != 'l' ? c : (char)c;
 	c_index = (is_flagged(info->flags, FLAGS, '-')
 		? 0 : info->min_field_width - 1);
 	while (count < info->min_field_width || count < 1)
 	{
 		if (count == c_index || info->min_field_width == 0)
-			count += print_char(info->length, c);
+		{
+			if ((ret = print_char(info->length, c)) < 0)
+				return (-1);
+			count += ret;
+		}
 		else
 			count += print_char("  ",
-			is_flagged(info->flags, FLAGS, '0') ? '0' : ' ');
+				is_flagged(info->flags, FLAGS, '0') ? '0' : ' ');
 	}
 	return (count);
 }
