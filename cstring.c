@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 16:10:03 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/20 13:08:31 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/20 13:16:37 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,20 @@
 
 int			print_long_s(t_info *info)
 {
+	int		i;
 	int		len;
 	int		count;
 	int		ret;
 	int		lesser;
 	wchar_t	*s;
 
-	s = va_arg(info->ap, wchar_t *);;
+	s = va_arg(info->ap, wchar_t *);
+	// if (!s)
+	// {
+	// 	info->length[0] = ' ';
+	// 	info->length[1] = ' ';
+	// 	s = "(null)";
+	// }
 	count = 0;
 	len = 0;
 	while (s[len])
@@ -49,12 +56,13 @@ int			print_long_s(t_info *info)
 	lesser = info->precision < len && info->precision >= 0 ? info->precision : len;
 	if (!is_flagged(info->flags, FLAGS, '-'))
 		count += putnchars(' ', info->min_field_width - lesser);
-	while (*s)
+	i = 0;
+	while (s[i] && (i < info->precision || info->precision < 0))
 	{
-		if ((ret = print_char(info->length, *s)) < 0)
+		if ((ret = print_char(info->length, s[i])) < 0)
 			return (-1);
 		count++;
-		s++;
+		i++;
 	}
 	if (is_flagged(info->flags, FLAGS, '-'))
 		count += putnchars(' ', info->min_field_width - lesser);
@@ -86,7 +94,7 @@ int			print_s(t_info *info)
 	if (!is_flagged(info->flags, FLAGS, '-'))
 		count += putnchars(' ', info->min_field_width - lesser);
 	i = 0;
-	while (s[i])
+	while (s[i] && (i < info->precision || info->precision < 0))
 	{
 		if ((ret = print_char(info->length, (char)s[i])) < 0)
 			return (-1);
