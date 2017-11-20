@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 16:10:03 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/20 12:55:26 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/20 13:08:31 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ int			print_s(t_info *info)
 	int		i;
 	int		ret;
 
+	if (info->length[0] == 'l' && info->length[1] != 'l')
+		return (print_long_s(info));
 	s = va_arg(info->ap, char *);
 	if (!s)
 	{
@@ -77,8 +79,6 @@ int			print_s(t_info *info)
 		info->length[1] = ' ';
 		s = "(null)";
 	}
-	if (info->length[0] == 'l' && info->length[1] != 'l')
-		return (print_long_s(info));
 	count = 0;
 	len = ft_strlen(s);//(info->length[0] == 'l' && info->length[1] != 'l') ?
 		// wstrlen((wchar_t *)s) : ft_strlen(s);
@@ -88,7 +88,7 @@ int			print_s(t_info *info)
 	i = 0;
 	while (s[i])
 	{
-		if ((ret = print_char(info->length, s[i])) < 0)
+		if ((ret = print_char(info->length, (char)s[i])) < 0)
 			return (-1);
 		count += ret;
 		i++;

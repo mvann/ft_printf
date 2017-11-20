@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 14:21:28 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/20 12:56:41 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/20 13:02:27 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,12 @@
 
 int		print_char(char length[2], int c)
 {
-	// printf("\nC:%d, {%c,%c}\n", c, length[0], length[1]);
 	if (length[0] == 'l' && length[1] != 'l')
 	{
 		if ((unsigned int)c > 255)
 			return (-1);
 	}
-	// {
 	ft_putchar(c);
-	// }
-	// else
-	// 	ft_putwchar(c);
 	return (1);
 }
 
@@ -37,7 +32,6 @@ int		print_c(t_info *info, int use_percentage)
 
 	count = 0;
 	c = use_percentage ? '%' : va_arg(info->ap, int);
-	// c = info->length[0] == 'l' && info->length[1] != 'l' ? c : (char)c;
 	c_index = (is_flagged(info->flags, FLAGS, '-')
 		? 0 : info->min_field_width - 1);
 	while (count < info->min_field_width || count < 1)
