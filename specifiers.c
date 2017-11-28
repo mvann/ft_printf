@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 17:57:48 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/27 18:07:20 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/27 18:21:34 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		put_specifier(const char *format, t_info *info)
 	t_specifier_func	*funcs;
 
 	c = format[info->i];
-	if (!is_instr(SPECIFIERS, c))
+	if (!c || !is_instr(SPECIFIERS, c))
 		return (-1);
 	funcs = (t_specifier_func *)malloc(
 		sizeof(t_specifier_func) * ft_strlen(SPECIFIERS));
