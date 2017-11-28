@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   mapped_functions_2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/04 15:48:35 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/15 16:36:54 by mvann            ###   ########.fr       */
+/*   Created: 2017/11/27 16:53:12 by mvann             #+#    #+#             */
+/*   Updated: 2017/11/27 16:53:38 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h> //delete this whole file actually
 #include "ft_printf.h"
-// int	 printf(__const char * restrict, ...) __attribute__((__format__ (__printf__, 1,  2)));
-int		main()
+
+int	print_unsigned_hex(t_info *info)
 {
-	//char str[] = "sup";
-	// ft_printf("%lc\n", L'Δ');
-	// ft_printf("%ls\n", (wchar_t *)"hell there");
+	return (print_unsigned(info, 16, 0));
+}
 
-	// printf("%#.x", 0);
-	// printf("\n...and...\n");
-	ft_printf("%s", "abc");
+int	print_unsigned_hex_upper(t_info *info)
+{
+	return (print_unsigned(info, 16, 1));
+}
 
-	return (0);
+int	print_unsigned_int(t_info *info)
+{
+	return (print_unsigned(info, 10, 0));
+}
+
+int	print_long_unsigned_int(t_info *info)
+{
+	info->length[0] = 'l';
+	info->length[1] = ' ';
+	return (print_unsigned(info, 10, 0));
 }

@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 13:37:05 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/15 16:22:32 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/27 16:44:20 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,18 +62,18 @@ int		add_precision(const char *format, t_info *info)
 	c = format[info->i];
 	if (c == '*')
 	{
-		info->precision = va_arg(info->ap, int);
+		info->prec = va_arg(info->ap, int);
 		info->i++;
 	}
 	else if (c >= '0' && c <= '9')
 	{
-		info->precision = ft_atoi(format + info->i);
+		info->prec = ft_atoi(format + info->i);
 		while (format[info->i] >= '0' && format[info->i] <= '9'
 		&& format[info->i])
 			info->i++;
 	}
 	else
-		info->precision = 0;
+		info->prec = 0;
 	return (1);
 }
 
