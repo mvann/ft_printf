@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 19:43:18 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/15 20:01:41 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/27 15:24:25 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ unsigned long	get_unsigned(char l[2], t_info *info)
 	else if (l[0] == 'h')
 	{
 		if (l[1] == 'h')
-			return ((long)va_arg(info->ap, unsigned int));
+			return ((long)(char)va_arg(info->ap, unsigned int));
 		else
-			return ((long)va_arg(info->ap, unsigned int));
+			return ((long)(short)va_arg(info->ap, unsigned int));
 	}
 	else if (l[0] == 'j')
 		return ((long)va_arg(info->ap, uintmax_t));
@@ -39,15 +39,19 @@ int				print_unsigned(t_info *info, int base, int uppercase)
 {
 	unsigned long n;
 	char *s;
-	// int i;
-	// int e;
 	int count;
 	int	octal_and_hash;
 
 	n = get_unsigned(info->length, info);
+	if (info->length[0] == 'h')
+	{
+		if (info->length[1] == 'h')
+			n = n & 0x00000000000000FF;
+		else
+			n = n & 0x000000000000FFFF;
+	}
 	s = ft_ultoa_base(n, base, uppercase);
-	// i = 0;
-	// e = info->min_field_width - ft_strlen(s);
+
 	count = 0;
 	octal_and_hash = base == 8 && is_flagged(info->flags, FLAGS, '#');
 	if (s[0] == '0' && info->precision == 0)
@@ -69,6 +73,7 @@ int				print_pointer(t_info *info)
 	unsigned long n;
 	char *s;
 	int count;
+	int	ret;
 
 	add_flag(info, FLAGS, '#');
 	n = va_arg(info->ap, unsigned long);

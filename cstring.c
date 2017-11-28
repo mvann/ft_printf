@@ -6,32 +6,11 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 16:10:03 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/20 13:16:37 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/27 16:26:47 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-// static int	print_s_chars(char *s)
-// {
-// 	int i;
-// 	int count;
-//
-// 	i = 0;
-// 	count = 0;
-// 	while (s[i])
-// 	{
-// 		if ((unsigned char)(s[i]) >= 192 || (unsigned char)(s[i]) < 128)
-// 		{
-// 			ft_putwchar((int)s[i]);
-// 			// count++;
-// 		}
-// 		// ft_putchar(s[i]);
-// 		count++;
-// 		i++;
-// 	}
-// 	return (count);
-// }
 
 int			print_long_s(t_info *info)
 {
@@ -43,12 +22,12 @@ int			print_long_s(t_info *info)
 	wchar_t	*s;
 
 	s = va_arg(info->ap, wchar_t *);
-	// if (!s)
-	// {
-	// 	info->length[0] = ' ';
-	// 	info->length[1] = ' ';
-	// 	s = "(null)";
-	// }
+	if (!s)
+	{
+		info->length[0] = ' ';
+		info->length[1] = ' ';
+		s = L"(null)";
+	}
 	count = 0;
 	len = 0;
 	while (s[len])
@@ -88,8 +67,7 @@ int			print_s(t_info *info)
 		s = "(null)";
 	}
 	count = 0;
-	len = ft_strlen(s);//(info->length[0] == 'l' && info->length[1] != 'l') ?
-		// wstrlen((wchar_t *)s) : ft_strlen(s);
+	len = ft_strlen(s);
 	lesser = info->precision < len && info->precision >= 0 ? info->precision : len;
 	if (!is_flagged(info->flags, FLAGS, '-'))
 		count += putnchars(' ', info->min_field_width - lesser);

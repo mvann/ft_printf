@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/04 15:55:24 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/14 20:06:37 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/27 16:19:42 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int			format_str(const char *format, t_info *info)
 	// 	info->i++;
 	// 	return (1);
 	// }
+	if (!format[info->i])
+		return (0);
 	if (!add_flags(format, info))
 		return (-1);
 	if ((count = put_specifier(format, info)) < 0)

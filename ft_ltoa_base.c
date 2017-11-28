@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 19:34:26 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/15 17:07:15 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/27 14:03:37 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ char		*ft_build_longmin(void)
 	min = "-9223372036854775808";
 	out = (char *)malloc(sizeof(char) * 20);
 	i = 0;
-	while (i < 20)
+	while (i <= 20)
 	{
 		out[i] = min[i];
 		i++;

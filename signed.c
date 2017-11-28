@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 17:42:05 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/15 20:01:10 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/27 16:09:32 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int			print_signed_int(t_info *info)
 			n = (long)(short)n;
 	}
 	s = ft_ltoa_base(n, 10, is_flagged(info->flags, FLAGS, '+'), is_flagged(info->flags, FLAGS, ' '));
-
 	if (s[0] == '0' && info->precision == 0)
 	{
 		free(s);
@@ -67,13 +66,14 @@ int	print_number(t_info *info, int base, int uppercase, char *s)
 	int	precision;
 	int	count;
 
+	// printf("s:%s\n", s);
 	s_len = ft_strlen(s) + (is_flagged(info->flags, FLAGS, '#') && base == 16 ?
 		2 : 0);
 	s_len += (is_flagged(info->flags, FLAGS, '#') && base == 8 ? 1 : 0);
 	s_len = s[0] == '0' ? 1 : s_len;
 	precision = info->precision < 0 ? 1 : info->precision;
 	precision = precision - (s_len) + (s[0] == '-' || s[0] == '+' || s[0] == ' ');
-	e = info->min_field_width - (s_len + (precision >= 0 ? precision : 0));
+	e = info->min_field_width - (s_len + (precision >= 0 ? precision : 0) + ((base == -1) * 2));
 	count = 0;
 	if ((!is_flagged(info->flags, FLAGS, '0') ||
 	(is_flagged(info->flags, FLAGS, '0') && info->precision >= 0)) &&
@@ -89,7 +89,8 @@ int	print_number(t_info *info, int base, int uppercase, char *s)
 		count += put_str_retlen("0x");
 	if ((is_flagged(info->flags, FLAGS, '0') && info->precision < 0) && !is_flagged(info->flags, FLAGS, '-'))
 		count += putnchars('0', e);
-	count += putnchars('0', precision);
+	count += putnchars('0', precision + (is_flagged(info->flags, FLAGS, '#') && base == 16 && info->precision >= 0 ?
+		2 : 0));
 	i = (s[0] == '-' || s[0] == '+' || s[0] == ' ');
 	while (s[i])
 	{

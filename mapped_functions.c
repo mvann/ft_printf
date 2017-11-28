@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 16:14:08 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/20 12:41:35 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/20 13:50:55 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,13 @@ int	print_unsigned_oct(t_info *info)
 	// flagged = is_flagged(info->flags, FLAGS, '#');
 	// if (flagged)
 	// 	ft_putchar('0');
+	return (print_unsigned(info, 8, 0));
+}
+
+int	print_unsigned_long_oct(t_info *info)
+{
+	info->length[0] = 'l';
+	info->length[1] = ' ';
 	return (print_unsigned(info, 8, 0));
 }
 
