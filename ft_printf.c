@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/04 15:55:24 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/27 16:45:49 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/27 18:11:55 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,12 @@ static void	not_percent(const char *format, t_info *info, int *count)
 	info->i++;
 }
 
+static void	free_info(t_info *info)
+{
+	va_end(info->ap);
+	free(info);
+}
+
 int			ft_printf(const char *format, ...)
 {
 	t_info	*info;
@@ -59,13 +65,15 @@ int			ft_printf(const char *format, ...)
 		if (format[info->i] == '%')
 		{
 			if ((ret = format_str(format, info)) < 0)
+			{
+				free_info(info);
 				return (-1);
+			}
 			count += ret;
 		}
 		else
 			not_percent(format, info, &count);
 	}
-	va_end(info->ap);
-	free(info);
+	free_info(info);
 	return (count);
 }

@@ -6,7 +6,7 @@
 /*   By: mvann <mvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 17:57:48 by mvann             #+#    #+#             */
-/*   Updated: 2017/11/20 13:50:27 by mvann            ###   ########.fr       */
+/*   Updated: 2017/11/27 18:07:20 by mvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,11 @@ int		put_specifier(const char *format, t_info *info)
 		sizeof(t_specifier_func) * ft_strlen(SPECIFIERS));
 	init_funcs(funcs);
 	if ((count = (*funcs[ft_str_iofc(SPECIFIERS, c)])(info)) < 0)
+	{
+		free(funcs);
 		return (-1);
+	}
 	info->i++;
+	free(funcs);
 	return (count);
 }
